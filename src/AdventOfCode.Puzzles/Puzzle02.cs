@@ -11,27 +11,27 @@ namespace AdventOfCode.Puzzles
 
         public static int CountValidPolicy1Passwords(IEnumerable<(string password, char charToCheck, int minOccurences, int maxOccurences)> inputs)
         => inputs
-            .Where(x => IsPasswordPolicy1Valid(x.password, x.charToCheck, x.minOccurences, x.maxOccurences))
+            .Where(x => x.password.IsPasswordPolicy1Valid(x.charToCheck, x.minOccurences, x.maxOccurences))
             .Count();
 
         public static int CountValidPolicy2Passwords(IEnumerable<(string password, char charToCheck, int position1, int position2)> inputs)
         => inputs
-            .Where(x => IsPasswordPolicy2Valid(x.password, x.charToCheck, x.position1, x.position2))
+            .Where(x => x.password.IsPasswordPolicy2Valid(x.charToCheck, x.position1, x.position2))
             .Count();
 
-        public static bool IsPasswordPolicy1Valid(string password, char charToCheck, int minOccurences, int maxOccurences)
+        public static bool IsPasswordPolicy1Valid(this string password, char charToCheck, int minOccurences, int maxOccurences)
         => password
               .ToCharArray()
               .Where(x => x == charToCheck)
               .Count()
               .IsInRange(minOccurences, maxOccurences);
 
-        public static bool IsPasswordPolicy2Valid(string password, char charToCheck, int position1, int position2)
+        public static bool IsPasswordPolicy2Valid(this string password, char charToCheck, int position1, int position2)
         => (password.Length >= position2)
             && (password[position1 - 1] == charToCheck || password[position2 - 1] == charToCheck)
             && (password[position1 - 1] != password[position2 - 1]);
 
-        public static IEnumerable<(string password, char charToCheck, int minOccurences, int maxOccurences)> ToPuzzle2Task1Input(this string input)
+        public static IEnumerable<(string password, char charToCheck, int minOccurences, int maxOccurences)> ToPuzzle2Input(this string input)
         => input
             .Trim()
             .Split("\r\n")

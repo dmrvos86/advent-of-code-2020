@@ -14,7 +14,7 @@ namespace AdventOfCode.Puzzles.Tests
 10-13 d: dddd
 10-13 d: dddddddddddddd";
 
-            var count = Puzzle02.CountValidPolicy1Passwords(stringInput.ToPuzzle2Task1Input());
+            var count = Puzzle02.CountValidPolicy1Passwords(stringInput.ToPuzzle2Input());
             Assert.Equal(3, count);
         }
 
@@ -25,7 +25,7 @@ namespace AdventOfCode.Puzzles.Tests
 1-3 b: cdefg
 2-9 c: ccccccccc";
 
-            var count = Puzzle02.CountValidPolicy2Passwords(stringInput.ToPuzzle2Task1Input());
+            var count = Puzzle02.CountValidPolicy2Passwords(stringInput.ToPuzzle2Input());
             Assert.Equal(1, count);
         }
 

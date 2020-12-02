@@ -6,8 +6,8 @@ namespace AdventOfCode.Puzzles.Runner
     {
         private static void Main(string[] args)
         {
-            var result1 = Puzzle02.CountValidPolicy1Passwords(PuzzleInput.ToPuzzle2Task1Input());
-            var result2 = Puzzle02.CountValidPolicy2Passwords(PuzzleInput.ToPuzzle2Task1Input());
+            var result1 = Puzzle02.CountValidPolicy1Passwords(PuzzleInput.ToPuzzle2Input());
+            var result2 = Puzzle02.CountValidPolicy2Passwords(PuzzleInput.ToPuzzle2Input());
 
             Console.WriteLine($"Valid passwords (policy 1): {result1}");
             Console.WriteLine($"Valid passwords (policy 2): {result2}");
