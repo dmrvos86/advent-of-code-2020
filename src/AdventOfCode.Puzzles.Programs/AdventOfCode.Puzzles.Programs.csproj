@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
 	<LangVersion>9.0</LangVersion>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <StartupObject>AdventOfCode.Puzzles.Runner.Puzzle02Program</StartupObject>
+    <StartupObject>AdventOfCode.Puzzles.Runner.Puzzle03Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
