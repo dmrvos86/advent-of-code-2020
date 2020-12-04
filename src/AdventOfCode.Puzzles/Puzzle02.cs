@@ -28,8 +28,7 @@ namespace AdventOfCode.Puzzles
 
         public static bool IsPasswordPolicy2Valid(this string password, char charToCheck, int position1, int position2)
         => (password.Length >= position2)
-            && (password[position1 - 1] == charToCheck || password[position2 - 1] == charToCheck)
-            && (password[position1 - 1] != password[position2 - 1]);
+            && (password[position1 - 1] == charToCheck ^ password[position2 - 1] == charToCheck);
 
         public static IEnumerable<(string password, char charToCheck, int minOccurences, int maxOccurences)> ToPuzzle2Input(this string input)
         => input
