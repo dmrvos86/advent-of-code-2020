@@ -13,7 +13,7 @@ namespace AdventOfCode.Puzzles
         public static int CountTask1(Dictionary<string, IEnumerable<(int count, string bag)>> input, string bagToFind = "shiny gold")
         => BagsWithGivenBag(input, bagToFind).Count();
 
-        public static long CountTask2(Dictionary<string, IEnumerable<(int count, string bag)>> input, string bagToFind = "shiny gold")
+        public static int CountTask2(Dictionary<string, IEnumerable<(int count, string bag)>> input, string bagToFind = "shiny gold")
         => BagsWithinBag(input, bagToFind);
 
         public static Dictionary<string, IEnumerable<(int count, string bag)>> ToPuzzle7Input(this string input)
@@ -60,15 +60,14 @@ namespace AdventOfCode.Puzzles
             return bagsWithGivenBag;
         }
 
-        private static long BagsWithinBag(Dictionary<string, IEnumerable<(int count, string bag)>> bagMap, string bagToFind)
+        private static int BagsWithinBag(Dictionary<string, IEnumerable<(int count, string bag)>> bagMap, string bagToFind)
         {
             IEnumerable<(int parentCount, IEnumerable<(int count, string bag)> bags)> bagsToSearch = bagMap[bagToFind].Select(y => (y.count, bagMap[y.bag]));
-            long matchesFound = bagsToSearch.Select(x => x.parentCount).Sum();
+            int matchesFound = bagsToSearch.Select(x => x.parentCount).Sum();
 
             while (bagsToSearch.Any())
             {
                 bagsToSearch = bagsToSearch
-                    .Where(x => bagMap.Keys.Intersect(x.bags.Select(y => y.bag)).Any())
                     .SelectMany(x => x.bags.Select(y => (y.count * x.parentCount, bagMap[y.bag])));
 
                 matchesFound += bagsToSearch.Select(x => x.parentCount).Sum();
