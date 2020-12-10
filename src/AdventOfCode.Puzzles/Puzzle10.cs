@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace AdventOfCode.Puzzles
@@ -33,7 +34,11 @@ namespace AdventOfCode.Puzzles
 
         public static long Task2(IEnumerable<int> input)
         {
-            return CountDistinctConnections(input.Prepend(0).Append(input.Max() + 3).ToList());
+            var dataToProcess = input
+                .Prepend(0)
+                .Append(input.Max() + 3)
+                .ToList();
+            return CountDistinctConnections(dataToProcess);
         }
 
         public static IEnumerable<int> ToPuzzle10Input(this string input)
@@ -44,7 +49,7 @@ namespace AdventOfCode.Puzzles
 
         private static long CountDistinctConnections(List<int> input)
         {
-            // Find all three-diffs
+            // Find all three-diffs.
             var diffs = new List<int>();
             for (var i = 1; i < input.Count; i++)
             {
@@ -63,6 +68,7 @@ namespace AdventOfCode.Puzzles
                 matches = matches > 0 ? (matches * matchesSubset) : matchesSubset;
             }
 
+            // Last segment.
             var rangeLast = input.Skip(diffs.Last()).ToList();
             if (rangeLast.Any())
             {
@@ -90,7 +96,6 @@ namespace AdventOfCode.Puzzles
                 for (int i = 1; i < data.Count() - 1; i++)
                 {
                     var el1 = data.ElementAt(i - 1);
-                    var el2 = data.ElementAt(i);
                     var el3 = data.ElementAt(i + 1);
 
                     if (el3 - el1 <= 3)
@@ -98,7 +103,21 @@ namespace AdventOfCode.Puzzles
                 }
             }
 
-            return permutations.Select(x => string.Join(',', x)).Distinct().Count();
+            var comparer = new EnumerableComparer<int>();
+            return permutations.Distinct(comparer).Count();
+        }
+
+        private class EnumerableComparer<T> : IEqualityComparer<IEnumerable<T>>
+        {
+            public bool Equals([AllowNull] IEnumerable<T> x, [AllowNull] IEnumerable<T> y)
+            {
+                return x.Intersect(y).Count() == y.Count();
+            }
+
+            public int GetHashCode([DisallowNull] IEnumerable<T> obj)
+            {
+                return obj.Count() * obj.OrderBy(x => x).Select(x => x.GetHashCode()).Aggregate((x, y) => (x + y));
+            }
         }
     }
 }
