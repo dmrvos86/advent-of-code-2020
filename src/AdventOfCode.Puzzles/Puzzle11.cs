@@ -50,9 +50,6 @@ namespace AdventOfCode.Puzzles
 
         private static (int matches, int maxMatches) FindMatches(this List<List<TileTypes>> input, int x, int y, TileTypes match, bool processAllVisible = false)
         {
-            var rowsMaxIndex = input.Count - 1;
-            var colsMaxIndex = input[x].Count - 1;
-
             var maxMatches = 0;
             var matches = 0;
 

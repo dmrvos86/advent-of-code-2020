@@ -6,11 +6,17 @@ namespace AdventOfCode.Puzzles.Runner
     {
         private static void Main(string[] args)
         {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
             var result1 = Puzzle11.Task1(PuzzleInput.ToPuzzle11Input());
-            Console.WriteLine($"Element: {result1}");
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            Console.WriteLine($"Element: {result1} (elapsed: {elapsedMs})");
 
+            watch = System.Diagnostics.Stopwatch.StartNew();
             var result2 = Puzzle11.Task2(PuzzleInput.ToPuzzle11Input());
-            Console.WriteLine($"Element: {result2}");
+            watch.Stop();
+            elapsedMs = watch.ElapsedMilliseconds;
+            Console.WriteLine($"Element: {result2} (elapsed: {elapsedMs})");
         }
 
         private static readonly string PuzzleInput = @"LLLLL.LLLL.LLLLLLL.LLLLLLLLLLLLLLLL.LLLLLLLLL.LLLLLLLLL.LLLLLLL.LLLLLLLLLLLL.LL.LLLLLLLLL.LLL
