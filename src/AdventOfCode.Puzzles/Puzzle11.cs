@@ -59,7 +59,7 @@ namespace AdventOfCode.Puzzles
                     if (i == 0 && j == 0)
                         continue;
 
-                    TileTypes? element = GetFirstSeat(input, x, y, i, j, processAllVisible ? null : 1);
+                    TileTypes? element = processAllVisible ? GetFirstSeat(input, x, y, i, j) : GetFirstSeatAdjacent(input, x, y, i, j);
 
                     if (element == TileTypes.FLOOR || element == null)
                         continue;
@@ -71,14 +71,13 @@ namespace AdventOfCode.Puzzles
             return (matches, maxMatches);
         }
 
-        private static TileTypes? GetFirstSeat(this List<List<TileTypes>> input, int x, int y, int xIncrement, int yIncrement, int? maxIterations = null)
+        private static TileTypes? GetFirstSeat(this List<List<TileTypes>> input, int x, int y, int xIncrement, int yIncrement)
         {
             var row = x + xIncrement;
             var col = y + yIncrement;
-            var depth = 0;
             TileTypes? element = null;
 
-            while (row >= 0 && row < input.Count && col >= 0 && col < input[x].Count && (maxIterations == null || depth < maxIterations))
+            while (row >= 0 && row < input.Count && col >= 0 && col < input[x].Count)
             {
                 element = input[row][col];
                 if (element != TileTypes.FLOOR)
@@ -86,8 +85,22 @@ namespace AdventOfCode.Puzzles
 
                 row += xIncrement;
                 col += yIncrement;
+            }
 
-                depth++;
+            return element;
+        }
+
+        private static TileTypes? GetFirstSeatAdjacent(this List<List<TileTypes>> input, int x, int y, int xIncrement, int yIncrement)
+        {
+            var row = x + xIncrement;
+            var col = y + yIncrement;
+            TileTypes? element = null;
+
+            if (row >= 0 && row < input.Count && col >= 0 && col < input[x].Count )
+            {
+                element = input[row][col];
+                if (element != TileTypes.FLOOR)
+                    return element;
             }
 
             return element;
