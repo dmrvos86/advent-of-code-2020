@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.Puzzles", "AdventOfCode.Puzzles\AdventOfCode.Puzzles.csproj", "{8292F828-2879-4584-B92C-4DEB1BAAA343}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Puzzles", "AdventOfCode.Puzzles\AdventOfCode.Puzzles.csproj", "{8292F828-2879-4584-B92C-4DEB1BAAA343}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.Puzzles.Tests", "AdventOfCode.Puzzles.Tests\AdventOfCode.Puzzles.Tests.csproj", "{708883F8-ED95-462A-B1EF-59B45112CFE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Puzzles.Tests", "AdventOfCode.Puzzles.Tests\AdventOfCode.Puzzles.Tests.csproj", "{708883F8-ED95-462A-B1EF-59B45112CFE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.Puzzles.Programs", "AdventOfCode.Puzzles.Programs\AdventOfCode.Puzzles.Programs.csproj", "{909686DC-E05A-419D-AFF2-0030AD008F31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Puzzles.Programs", "AdventOfCode.Puzzles.Programs\AdventOfCode.Puzzles.Programs.csproj", "{909686DC-E05A-419D-AFF2-0030AD008F31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

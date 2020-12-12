@@ -95,7 +95,7 @@ namespace AdventOfCode.Puzzles
         public static IEnumerable<(char side, int moves)> ToPuzzle12Input(this string input)
         => input
             .Split("\r\n")
-            .Select(x => (x[0], Convert.ToInt32(x.Substring(1))));
+            .Select(x => (x[0], Convert.ToInt32(x[1..])));
 
         private static (int x, int y) Move(int x, int y, Sides side, int moves)
         {
@@ -114,7 +114,7 @@ namespace AdventOfCode.Puzzles
         }
 
         private static Sides ToSide(this char input)
-                    => input == 'N'
+        => input == 'N'
             ? Sides.NORTH
             : input == 'S'
             ? Sides.SOUTH

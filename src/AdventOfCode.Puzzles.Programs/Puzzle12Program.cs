@@ -9,13 +9,13 @@ namespace AdventOfCode.Puzzles.Runner
             var watch = System.Diagnostics.Stopwatch.StartNew();
             var result1 = Puzzle12.Task1(PuzzleInput.ToPuzzle12Input());
             watch.Stop();
-            var elapsedMs = watch.ElapsedMilliseconds;
+            var elapsedMs = watch.Elapsed;
             Console.WriteLine($"Element: {result1} (elapsed: {elapsedMs})");
 
             watch = System.Diagnostics.Stopwatch.StartNew();
             var result2 = Puzzle12.Task2(PuzzleInput.ToPuzzle12Input());
             watch.Stop();
-            elapsedMs = watch.ElapsedMilliseconds;
+            elapsedMs = watch.Elapsed;
             Console.WriteLine($"Element: {result2} (elapsed: {elapsedMs})");
         }
 
